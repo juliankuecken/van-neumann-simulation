@@ -1,0 +1,19 @@
+00 JMP 04	Programm zur Addition der Werte einer Liste, return: Summe
+01 0		Summe der Addition (Ergebnis)
+02 13		Verweis auf aktuelle Listenposition
+03 1		Inkrementor; Konstante 1
+04 LDA (02)	Indirektes Laden der ersten Listenposition
+05 JZE 12	Überprüfung auf Listenende
+06 ADD 01	Addition aktueller Wert mit Zwischenergebnis
+07 STA 01	Speichern in Zwischenergebnis
+08 LDA 02	Laden der aktuellen Listenposition
+09 ADD 03	Erhöhung um 1; Addition mit Inkrementor
+10 STA 02	Speichern
+11 JMP 04	Rekursion
+12 STP		Stop
+13 10		Listenbeginn
+14 10
+15 10
+16 10
+17 10
+18 0		Listenende

@@ -1,0 +1,23 @@
+00 JMP 10	Programm zur Suche eines Elements in einer Liste, return: 0; 1
+01 04		Verweis aktuelles Listenelement
+02 14		Gesuchte Zahl
+03 0		Ergebnis
+04 7		Listenbeginn
+05 11
+06 14
+07 3
+08 0		Listenende
+09 LDA (01)	Indirektes Laden der ersten Listenposition
+10 JZE 17	Überprüfung auf Listenende
+11 SUB 02	Subtraktion mit gesuchter Zahl
+12 JZE 20	Überprüfung ob Ergebnis Null (gesuchte Zahl gefunden)
+13 LDA #1	Direktes Laden des Wertes 1
+14 ADD 01	Addition mit aktueller Listenposition
+15 STA 01	Speichern
+16 JMP 11	Rekursion (Wiederaufruf der Schleife)
+17 LDA #0	Direktes Laden des Wertes 0 (Bed.: erreichen des Listenendes (10))
+18 STA 03	Speichern
+19 STP		Stop
+20 LDA #1	Direktes Laden des Wertes 1 (Bed.: gesuchte Zahl erreicht (12))
+21 STA 03	Speichern
+22 STP		Stop

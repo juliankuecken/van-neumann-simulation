@@ -1,0 +1,24 @@
+00 LDA (26)	indirect load of first listelement through index
+01 STA 23	store value inside current_element help variable
+02 LDA 24	load result
+03 ADD 22	add 1 to result
+04 STA 24	store result again
+05 LDA 23	load current_element
+06 JZE 21	check if zero (last list element) if so: jump to stop; if not: keep going
+07 LDA 26	load list_position index
+08 ADD 22	add 1 to index
+09 STA 26	store again
+10 JMP 00	restart loop, jump back to the beginning
+21 STP		stop program
+22 1		constant 1
+23 0		current_element
+24 0		result (amount of items in list)
+25 1		incrementor (unnecessary)
+26 27		index of list start
+27 1		list throughout 27 (beginning) to 33 (end)
+28 2
+29 3
+30 4
+31 5
+32 6
+33 0

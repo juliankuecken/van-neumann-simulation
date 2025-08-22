@@ -1,0 +1,56 @@
+00 0
+01 0
+02 0
+03 0
+04 0
+05 lda (26)	Erstes element der liste laden (Erste Schleife, die den ersten Wert aktualisiert)
+06 sta 33	Erstes element in aktuelles ergebnis (33) speichern
+07 add 31	Konstante 1 auf aktuelle Listenposition addieren
+08 sta 26	In Stelle 26 speichern, Listenposition updaten
+09 lda (26)	Element am index des nächsten listenwertes laden
+10 sub 34	Mit anderem element subtrahieren
+11 jze 0	Wenn Ergebnis der subtraktion 0 ist, wird gesprungen
+12 lda 26	Listenposition des nächsten Elements laden
+13 add 31	Listenposition um Konstante 1 erhöhen
+14 
+15 jmp 07	Wenn Ergebnis nicht null ist, jumpen wir zum Anfang
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26 1
+27 2
+28 3
+29 1
+30 0
+31 1 Konstante
+32 0	Hilfsvariable Listenposition
+33	Variable aktuelles Ergebnis
+34	Variable zweites Ergebnis
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

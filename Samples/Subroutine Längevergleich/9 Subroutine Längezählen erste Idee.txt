@@ -1,0 +1,50 @@
+JMP
+1 Inkrementor
+Liste 1 start	(Damit von einer in andere übergeht)
+Ergebnis
+len(l1)
+len(l2)
+Hauptprogramm Posi wo weiter geht
+Vergleich ergebnis
+
+Hauptprogramm:
+Listenzählen
+Vergleichen:
+LDA len(l1)
+SUB len(l2)
+JLE XX (2 laden)
+JZE XX ende (0bleiben)
+LDA #01
+STA ergebnis
+JMP XX ende
+LDA #02 ende
+STA ergebnis
+STP Ende
+
+LDA (XX) Listenposition
+JZE XX	Listenzähler einen höher
+LDA XX Ergebnis
+ADD XX Inkrementor
+STA XX Ergebnis
+LDA XX listposition
+ADD XX Inkrementor
+STA XX listposition
+JMP XX (LDA(XX))
+
+
+LDA XX len(l1)
+JZE XX 2 zeilen runter (Wenn l1 noch nicht)
+LDA XX Ergebnis
+STA XX len(l2)
+STP	Jmp zum hauptprogramm vergeich
+LDA XX Ergebnis
+STA XX len(l1)
+LDA #00	Ergebnis reset
+STA XX Ergebnis
+LDA XX Listenposi
+ADD XX Inkrementor
+STA XX Listenposi
+JMP XX (LDA(XX))
+
+
+

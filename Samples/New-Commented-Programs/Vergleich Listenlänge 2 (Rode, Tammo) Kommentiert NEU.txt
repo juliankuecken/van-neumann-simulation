@@ -1,0 +1,52 @@
+00 JMP 10	Programm zum Vergleich, welche Liste länger ist, return: 0, 1, 2 (Rode, Tammo)
+01 1		Inkrementor; Konstante 1
+02 100		Verweis auf aktuelle Listenposition
+03 0		Ergebnis
+04 0		Listenlänge 1
+05 0		Listenlänge 2
+06 4		Adresse, an der Listenlänge gespeichert wird
+07 08		Verweis auf Jump-Befehle (für sequenziellen Ablauf des Programms)
+08 JMP 11	Jump in Subroutine (Ausgeführt nachdem erste Liste durchgezählt, Listenlängenadresse erhöhen)
+09 JMP 21	Jump in Hauptprogramm
+10 JMP 50	Jump in Subroutine (Beginn Hauptprogramm)
+11 LDA 02	Laden der aktuellen Listenposition
+12 ADD 01	Erhöhung um 1; Addition mit Inkrementor
+13 STA 02	Speichern
+14 LDA 06	Laden der Listenlängenadresse
+15 ADD 01	Erhöhung um 1; Addition mit Inkrementor
+16 STA 06	Speichern
+17 LDA 07	Laden des Verweises auf Jump-Befehl
+18 ADD 01	Erhöhung um 1; Addition mit Inkrementor
+19 STA 07	Speichern
+20 JMP 50	Jump in Subroutine (erneute Ausführung, 07 verändert)
+21 LDA 04	Laden der Listenlänge 1
+22 SUB 05	Subtraktion mit Listenlänge 2
+23 JZE 99	Überprüfung ob Ergebnis Null (Listen gleich lang)
+24 JLE 29	Überprüfung ob Ergebnis Weniger Gleich Null (Liste 2 länger)
+25 LDA #1	Direktes Laden der 1
+26 ADD 03	Addition mit Ergebnis (Wenn nicht vorher weggesprungen: Liste 1 länger, Ergebnis 1)
+27 STA 03	Speichern
+28 JMP 99	Program beenden (Jump zu Stop)
+29 LDA #2	Direktes Laden der 2
+30 ADD 03	Addition mit Ergebnis (Liste 2 länger, Ergebnis = 2)
+32 STA 03	Speichern
+33 JMP 99	Program beenden (Jump zu Stop)
+50 LDA (02)	Indirektes Laden der aktuellen Listenposition
+51 JZE (07)	Überprüfung auf Listenende (Wenn ja: Indirekter Jump zu Verweis (07) auf nächsten Jump-Befehl)#
+52 LDA (06)	Indirektes Laden der aktuellen Listenlänge
+53 ADD 01	Erhöhung um 1; Addition mit Inkrementor
+54 STA (06)	Speichern
+55 LDA 02	Laden der aktuellen Listenposition
+56 ADD 01	Erhöhung um 1; Addition mit Inkrementor
+57 STA 02	Speichern
+58 JMP 50	Rekursion (Wiederaufruf der Schleife)
+99 STP		Stop
+100 1		Listenbeginn 1
+101 1
+102 1
+103 0		Listenende 1
+104 1		Listenbeginn 2
+105 1
+106 1
+107 1
+108 0		Listenende 2

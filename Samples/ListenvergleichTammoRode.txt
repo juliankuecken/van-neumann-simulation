@@ -1,0 +1,40 @@
+00 JMP 10
+01 1
+02 100
+03 0
+04 0
+05 0
+06 4
+07 11
+10 jmp 50
+11 lda 02
+12 add 01
+13 sta 02
+14 lda 06
+15 add 01
+16 sta 06
+17 jmp 50
+18 lda 03
+19 sub 04
+20 jze 99
+21 jle 26 
+22 lda 03
+23 add 01
+24 sta 03
+25 jmp 99
+26 lda 03
+27 add 01
+28 add 01
+29 sta 03
+30 JMP 99
+50 lda(02)
+51 jze(11)
+52 lda(06)
+53 add 1
+54 sta(06)
+55 lda 02
+56 add 1
+57 sta 02
+58 jmp 50
+
+

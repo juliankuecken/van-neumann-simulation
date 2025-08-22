@@ -1,0 +1,35 @@
+00 JMP 06	Programm zur Suche nach doppelten Elementen in einer Liste, return: Anzahl
+01 0		Zähler der doppelten Elemente (Ergebnis)
+02 1		Inkrementor; Konstante 1
+03 28		Verweis aktuelles Listenelement
+04 0		Aktuelles Element für Vergleich
+05 0		Zähler innere Schleife für Vergleich
+06 LDA (03)	Indirektes Laden aktuelles Listenelement
+07 JZE 27	Überprüfung auf Listenende
+08 STA 04	Speichern in Variable für Vergleich
+09 LDA 03	Laden der aktuellen Listenposition
+10 STA 05	Speichern in Zählervariable für Vergleich
+11 LDA 05	Beginn innere Schleife; Laden des Zählers
+12 ADD 02	Erhöhung um 1; Addition mit Inkrementor
+13 STA 05	Speichern in Zählervariable
+14 LDA (05)	Indirektes Laden der nächsten Listenposition
+15 JZE 19	Überprüfung auf Listenende, Aüßere Schleife beginnt, wird erhöht,; Innere Schleife beendet
+16 SUB 04	Subtraktion mit Wert der vorherigen Listenposition
+17 JZE 23	Überprüfung ob Ergebnis Null (Wenn ja: doppelte Zahl gefunden)
+18 JMP 11	Rekursion der inneren Schleife
+19 LDA 03	Laden der aktuellen Listenposition
+20 ADD 02	Erhöhung um 1; Addition mit Inkrementor
+21 STA 03	Speichern
+22 JMP 06	Rekursion (Wiederaufruf der Schleife)
+23 LDA 01	Laden des Ergebnisses (Bed.: doppelte Zahl gefunden (17))
+24 ADD 02	Erhöhung um 1; Addition mit Inkrementor
+25 STA 01	Speichern in Ergebnisvariable
+26 JMP 11	Rekursion der inneren Schleife
+27 STP		Stop
+28 1		Listenbeginn
+29 2
+30 3
+31 2
+32 9
+33 3
+34 0		Listenende

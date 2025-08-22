@@ -1,0 +1,25 @@
+Sind 2 Listen gleichlang? 40 60 Listenbeginne
+JMP XX Programm
+40	1. Liste
+60	2. Liste
+1	Inkrementor
+	Ergebniss
+LDA (01)		Schleife
+JZE ##	vergleich
+LDA (02)
+JZE ## Stop
+LDA 01
+ADD Inkrementor
+STA 01
+LDA 02
+ADD Inkrementor
+STA 02
+JMP Schleife
+
+LDA (02)	Vergleich
+JZE ##	addiere 1 zu ergebniss und stop
+STP
+LDA Ergebniss
+ADD Inkrementor
+STA Ergebniss
+STP

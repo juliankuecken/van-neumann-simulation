@@ -1,0 +1,45 @@
+JMP
+
+Parameter
+
+1 Inkrementor
+Listenbeginn 1
+Ergebnis
+Länge 1
+Länge 2
+Position der Längenspeicherzelle
+Aktuelle Hauptprogramm-Position
+Ergebnis des Vergleichs
+
+
+Hauptprogramm
+Speichern der aktuellen Programmstelle in Variable
+Jump zur Subroutine
+Erhöhen der aktuellen Programmstelle nach Subroutine gelaufen
+Erhöhen der Position der Längenspeicherzelle
+Speichern der aktuellen Programmstelle in Variable
+Jump zur Subroutine
+
+Vergleichen:
+
+
+
+Subroutine (zählt Listenlänge und speichert)
+LDA (XX) Indirektes Laden Listenbeginn 1(erstes Element der Liste)
+LDA 08 Laden des Ergebnisses
+ADD 05 Einen auf die Länge addieren
+STA 08 Länge wieder speichern
+LDA (XX) Erneutes indirektes Laden des ersten Elements der Liste
+JZE (11) Sprung zurück ins Hauptprogramm, wenn Element null ist, also letztes Listenelelment erreicht ist
+LDA 06 Listenpositionsindex laden
+ADD 05 Einen zum Index hinzufügen
+STA 06 Listenpositionsindex speichern
+JMP 22 Restart loop
+
+
+
+
+
+
+
+

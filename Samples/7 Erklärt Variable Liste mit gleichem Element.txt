@@ -1,0 +1,34 @@
+variable liste durchgehen mit prüfen ob doppelt element
+zähler, inkrementor, aktuel, listenstart
+00 JMP 06
+01 0 Ergebniss
+02 1 inkrementor
+03 32	listenbeginn/verweiß
+04	vergleich  aktuelles element
+05	vergleich innere schleife vergeich zähler
+06 LDA (03)
+07 JZE XX	Stop
+08 STA 04
+09 LDA 03
+10 STA 05
+11 LDA 05	innere Schleife
+12 ADD 02
+13 STA 05
+14 LDA (05)
+15 JZE XX20	Äußere schleife (innere vorbei) (außere erhöhen)
+16 SUB 04
+17 JZE XX24	Addiere 1 Ergebniss und zurück springen
+18 JMP 11
+20 LDA 03
+21 ADD 02
+22 STA 03
+23 JMP XX Anfang
+24 LDA 01
+25 ADD 02
+26 STA 01
+27 JMP XX innere Schleife
+30 STP
+32 2
+33 3
+34 2
+35 0

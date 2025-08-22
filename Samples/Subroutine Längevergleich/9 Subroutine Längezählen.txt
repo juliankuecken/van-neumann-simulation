@@ -1,0 +1,53 @@
+00 JMP 11	Programm zum Vergleich, welche Liste länger ist, return: 0, 1, 2 (Leander)
+01 1		Inkrementor; Konstante 1
+02 50		Verweis auf aktuelle Listenposition
+03 0		Ergebnis 1? Wie lang ist die längere Liste?
+04 0		? Listenlänge 1
+05 0		? Listenlänge 2
+06 0		Ergebnis 2?; Ergenis des Vergleichs: Welche Liste ist länger?
+
+11 JMP 23	Jump in Subroutine zum Listenzählen
+12 LDA 04	Laden der ersten Listenlänge (Start des Vergleichs der gezählten Längen)
+13 SUB 05	Subtraktion mit zweiter Listenlänge
+14 JZE 21	Überprüfung auf gleiche Länge (Erster Fall abgefangen)
+15 JLE 19	Überprüfung auf zweite Länger (Zweiter Fall abgefangen)
+16 LDA #01	Direktes Laden der 1
+17 STA 06	Speichern in Ergebnis
+18 JMP 21	Programm beenden
+19 LDA #02	Direktes Laden der 2
+20 STA 06	Speichern in Ergebnis
+21 STP		Stop
+
+23 LDA (02)	Indirektes Laden aktuelles Listenelement
+24 JZE 33	Überprüfung auf Listenende (Wenn nicht, Listenzähler erhöhen)
+25 LDA 03	Ergebnis laden
+26 ADD 01	Erhöhung um 1; Addition mit Inkrementor
+27 STA 03	Speichern
+28 LDA 02	Laden der aktuellen Listenposition
+29 ADD 01	Erhöhung um 1; Addition mit Inkrementor
+30 STA 02	Speichern
+31 JMP 23	Rekursion (Wiederaufruf der Schleife)
+
+33 LDA 04	Laden der ersten Listenlänge (Wenn Listenende erreicht (33))
+34 JZE 38	Zwei Zeilen überspringen wenn l1 noch nicht ausgezählt
+35 LDA 03	Laden des vorläufigen Ergebnisses
+36 STA 05	Speichern der zweiten Listenlänge
+37 JMP 12	Jump zum Vergleich im Hauptprogramm
+38 LDA 03	Laden der Listenlänge, die noch nicht ausgezählt wurde
+39 STA 04	Speichern im vorläufigen Ergebnis der zweiten Listenlänge
+40 LDA #00	Direktes Laden der 0
+41 STA 03	Speichern zum Zurücksetzen
+42 LDA 02	Indirektes Laden der aktuellen Listenposition
+43 ADD 01	Erhöhung um 1; Addition mit Inkrementor
+44 STA 02	Speichern
+45 JMP 23	Rekursion (Wiederaufruf der Schleife)
+
+50 1
+51 1
+52 1
+53 0
+54 1
+55 1
+56 1
+57 1
+58 0

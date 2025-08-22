@@ -1,0 +1,30 @@
+00 JMP 06	Programm zur Rechnung mit Potenzen, return: Ergebnis
+01 6		Basis
+02 1		Exponent
+03 0		Ergebnis der Rechnung
+04 1		Inkrementor; Konstante 1
+05 0		Hilfsvariable Anzahl der Multiplikationen
+06 LDA 02	Laden des Exponenten
+07 JZE 24	Abfangen Sonderfall (hoch null = 1)
+08 SUB 04	Erniedrigung um 1; Subtrakrion mit Inkrementor
+09 JZE 27	Abfangen Sonderfall (x hoch eins = x)
+10 LDA 01	Laden der Basis
+11 STA 03	Speichern als Ergebnis (erstes Ergebnis, ohne Multiplikation)
+12 LDA 02	Laden des Exponenten
+13 SUB 04	Erniedrigung um 1; Subtrakrion mit Inkrementor
+14 STA 05	Speichern in Hilfsvariable
+15 LDA 03	Laden des Zwischenergebnisses
+16 MUL 01	Multiplikation mit Basis
+17 STA 03	Speichern
+18 LDA 05	Laden der Hilfsvariable
+19 SUB 04	Erniedrigung um 1; Subtrakrion mit Inkrementor
+20 STA 05	Speichern
+21 JZE 29	Überprüfen ob Multiplikationen fertig
+22 JMP 15	Rekursion (Wiederaufruf der Schleife)
+23 STP		Stop
+24 LDA 04	Laden des Inkrementors
+25 STA 03	Speichern als Ergebnis (Setzen auf 1, Sonderfall)
+26 STP		Stop
+27 LDA 01	Laden der Basis
+28 STA 03	Speichern als Ergebnis (Setzen auf Basis, Sonderfall)
+29 STP		Stop

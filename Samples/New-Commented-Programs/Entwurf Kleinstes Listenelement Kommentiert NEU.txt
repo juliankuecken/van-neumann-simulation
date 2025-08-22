@@ -1,0 +1,28 @@
+00 JMP 07
+01 31		Listenbeginn
+02 1		Inkrementor; Konstante 1
+03 0		Hilfsvariable aktuelles Element
+04 0		Ergebnis
+05 0		Zähler innere Schleife für Vergleich
+07 LDA (01)	Indirektes Laden aktuelles Listenelement
+08 JZE 27	Überprüfung auf Listenende
+09 STA 03	Speichern in Variable für Vergleich
+10 LDA 01	Laden der aktuellen Listenposition
+11 STA 05	Speicher in Zählvariable für Vergleich
+12 LDA 05	Beginn (innere) Schleife; Laden des Zählers
+13 ADD 02	Erhöhung um 1; Addition mit Inkrementor
+14 STA 05	Speichern in Zählervariable
+15 LDA (05)	Indirektes Laden der nächsten Listenposition
+16 JZE 27	Überprüfung auf Listenende
+17 SUB 03!!!!!	Subtraktion mit Wert der vorherigen Listenposition
+18 JLE 24	Wenn nächstes Listenelement kleiner Ergebnis -1 also Jump zum erneuern des kleinsten Wertes
+19 JMP 12	Rekursion (Wiederaufruf der inneren Schleife)
+24 LDA (05)	Indirektes Laden des kleineren Werts und als Ergebnis setzen Was passiert hier wenn neues kleineres Gefunden
+25 STA 04
+26 JMP 12!!
+27 STP
+31 4
+32 3
+33 2
+34 1
+35 0

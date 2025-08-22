@@ -1,0 +1,13 @@
+00 JMP 04
+01 3		Listenbeginn
+02 1
+03 0		Ergebnis
+04 LDA 01	Laden erstes Listenelement
+05 SUB 02	Subtraktion des nächsten Elements
+06 JLE 10	Überprüfung ob Negativ oder Null
+07 LDA 02	Zweites Element laden
+08 STA 03	Ergebnis speichern
+09 STP		Stop
+10 LDA 01	Erstes Element laden
+11 STA 03	Ergebnis speichern
+12 STP

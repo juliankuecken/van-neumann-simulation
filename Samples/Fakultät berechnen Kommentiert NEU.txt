@@ -1,0 +1,13 @@
+00 JMP 04	Programm zur Berechnung der Fakultät einer Zahl
+01 5		Zahl, dessen Fakultät ermittelt wird
+02 1		Ergebnis (startet bei 1 für 0! = 1)
+03 1		Inkrementor; Konstante 1
+04 LDA 01	Laden der Zahl
+05 JLE 12	Überprüfen ob Null
+06 MUL 02	Multiplikation mit Zwischenergebnis
+07 STA 02	Speichern als Ergebnis
+08 LDA 01	Laden der aktuellen Zahl
+09 SUB 03	Erniedrigung um 1; Subtraktion mit Inkrementor
+10 STA 01	Speichern
+11 JMP 05	Rekursion (Wiederaufruf der Schleife)
+12 STP		Stop
